@@ -1,0 +1,6 @@
+p {
+  background-color: #333; /* Couleur de fond */
+  color: #fff; /* Couleur du texte */
+  padding: 10px; /* Marge intérieure pour l'espace autour du contenu */
+  text-align: center; /* Centrer le contenu du header */
+}

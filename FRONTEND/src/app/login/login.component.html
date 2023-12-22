@@ -1,0 +1,29 @@
+<div *ngIf="!cnx">
+  <h4>Connexion :</h4>
+  <label for="login">login : </label><input [(ngModel)]="login" /><br />
+  <label for="password">password : </label
+  ><input [(ngModel)]="password" type="password" /><br />
+  <br />
+  <button (click)="connexion()" >Envoyer</button>
+</div>
+<hr />
+<div *ngIf="cnx">
+  <div class="container mt-4">
+    <h2>Compte client </h2>
+    <form>
+      <div class="form-group">
+        <label for="nom">Nom :</label>
+        <input type="text" class="form-control" id="nom" placeholder="{{nom}}">
+      </div>
+      <div class="form-group">
+        <label for="prenom">Prénom :</label>
+        <input type="text" class="form-control" id="prenom" placeholder="{{prenom}}">
+      </div>
+      <div class="form-group">
+        <label for="email">Email :</label>
+        <input type="email" class="form-control" id="email" placeholder="{{email}}">
+      </div>
+      <button type="submit" class="btn btn-primary" onclick="alert('Données modifiées')">Modifier</button>
+    </form>
+  </div>
+</div>

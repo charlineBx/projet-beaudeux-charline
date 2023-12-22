@@ -1,0 +1,26 @@
+<h1>Catalogue</h1>
+<br />
+<form>
+  <div class="form-group">
+    <label for="recherche">Recherche :</label>
+    <input #input [(ngModel)]="recherche" name="recherche" placeholder="Vélo ou VTT ou Liv..."/>
+  </div>
+</form>
+<br />
+<br />
+
+<hr />
+<br />
+
+<div class="row row-cols-3 row-md-4" id="container"  style="width: 80%;margin-left: 10%;" *ngIf="produitsFiltres | async as reponse">
+  <div class="card mb-5 mx-2 p-0" style="width: 18rem;" id="catalogue" *ngFor="let p of reponse">
+    <div class="card-header" style="width: 18rem;">{{ p.titre }}</div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">{{ p.description }}</li>
+      <li class="list-group-item">{{ p.prix }}€</li>
+      <li class="list-group-item">{{ p.qte }}</li>
+      <li class="list-group-item"><img class="car-img-top" style="width: 100%;" [src]="p.image"></li>
+    </ul>
+    <div class="card-footer"><button class="btn btn-dark" (click)="addProduitPanier(p)">+</button></div>
+  </div>
+</div>
