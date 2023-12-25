@@ -32,6 +32,24 @@ export class ProduitsComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (this.input) {
+      this.searchField$ = fromEvent(this.input.nativeElement, 'input').pipe(
+        map((event: any) => event.target.value),
+        debounceTime(300),
+        distinctUntilChanged(),
+        switchMap((term) =>
+          this.catalogueService.search(term).pipe(
+            catchError(() => of([] as Produit[]))
+          )
+        )
+      );
+  
+      this.produitsFiltres = this.searchField$;
+    } else {
+      this.produitsFiltres = this.catalogueService.getProduits();
+    }
+
+    /*
     this.produitsFiltres = this.catalogueService.getProduits();
     if(this.input){
       this.searchField$ = fromEvent(this.input.nativeElement, `input`);
@@ -51,7 +69,7 @@ export class ProduitsComponent implements OnInit {
     }else{
       this.produitsFiltres = this.catalogueService.getProduits();
       
-    }
+    }*/
     
   }
 

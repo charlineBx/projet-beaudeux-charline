@@ -15,7 +15,7 @@ export class CatalogueService {
 
   search(term: string) {
     if (term === '') {
-      return of([]);
+      return this.getProduits();
     }
 
     return this.http.get(
