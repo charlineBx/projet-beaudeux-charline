@@ -26,6 +26,7 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,FormsModule,
     RouterModule.forRoot([
     {path: 'home', component: HomeComponent},
+    {path: 'compte_client',component: LoginComponent},
       {path: 'catalogue',component: ProduitsComponent},
       {path: 'panier',component: ListeProduitsPanierComponent},
       {path: '',redirectTo:'home',pathMatch:'full'},
