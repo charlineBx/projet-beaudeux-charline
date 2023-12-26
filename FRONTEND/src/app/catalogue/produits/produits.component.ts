@@ -45,6 +45,7 @@ export class ProduitsComponent implements OnInit {
       );
   
       this.produitsFiltres = this.searchField$;
+     
     } else {
       this.produitsFiltres = this.catalogueService.getProduits();
     }
