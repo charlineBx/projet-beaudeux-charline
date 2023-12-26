@@ -6,7 +6,7 @@ import {
   StateContext,
   createSelector,
 } from '@ngxs/store';
-import { AddProduit,DelProduit } from '../actions/produit-action';
+import { AddProduit,DelProduit,ClearPanier } from '../actions/produit-action';
 import { ProduitStateModel } from './produit-state-model';
 
 @State<ProduitStateModel>({
@@ -51,6 +51,15 @@ export class ProduitState{
       produitsPanier: state.produitsPanier.filter(
         (x) => !(payload.titre == x.titre )
       ),
+    });
+  }
+
+  @Action(ClearPanier)
+  clear(
+    { setState }: StateContext<ProduitStateModel>
+  ) {
+    setState({
+      produitsPanier: []
     });
   }
 }

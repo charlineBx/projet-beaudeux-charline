@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Produit } from 'src/app/catalogue/models/produit';
-import { DelProduit } from 'src/app/shared/actions/produit-action';
+import { DelProduit,ClearPanier } from 'src/app/shared/actions/produit-action';
 import { ProduitState } from 'src/app/shared/states/produit-state';
 import { Observable } from 'rxjs';
 
@@ -18,5 +18,9 @@ export class ListeProduitsPanierComponent implements OnInit{
 
   delProduit(p:Produit): void{
     this.store.dispatch(new DelProduit(p));
+  }
+
+  clearPanier(): void {
+    this.store.dispatch(new ClearPanier());
   }
 }

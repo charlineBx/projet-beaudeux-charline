@@ -11,3 +11,9 @@ export class AddProduit {
   
     constructor(public payload: Produit) {}
   }
+
+  export class ClearPanier {
+    static readonly type = '[Panier] Clear'; // Adjust the type accordingly
+  
+    constructor() {}
+  }

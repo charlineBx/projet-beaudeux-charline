@@ -21,25 +21,33 @@
   </div>
 </ng-template>
 
-
 <hr />
 <div *ngIf="!cnx">
   <div class="container mt-4">
     <h4>Création Compte Client</h4>
-    <form>
+    <form id="compteClient" (ngSubmit)="ajouterUtilisateur()">
       <div class="form-group">
         <label for="nom">Nom :</label>
-        <input type="text" class="form-control" id="nom" placeholder="Dupont">
+        <input type="text" class="form-control" id="nom" name="nom" placeholder="Dupont" [(ngModel)]="nouvelUtilisateur.nom" required>
       </div>
       <div class="form-group">
         <label for="prenom">Prénom :</label>
-        <input type="text" class="form-control" id="prenom" placeholder="Toto">
+        <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Toto" [(ngModel)]="nouvelUtilisateur.prenom" required>
       </div>
       <div class="form-group">
-        <label for="email">Email :</label>
-        <input type="email" class="form-control" id="email" placeholder="adresse_mail@mail.com">
+        <label for="login">Login :</label>
+        <input type="text" class="form-control" id="loginCreate" name="loginCreate" placeholder="toto88" [(ngModel)]="nouvelUtilisateur.login" required>
       </div>
-      <button type="submit" class="btn btn-primary" onclick="alert('Données modifiées')">Enregistrer</button>
+      <div class="form-group">
+        <label for="password">Mot de passe :</label>
+        <input type="password" class="form-control" id="passwordCreate" name="passwordCreate" placeholder="***" [(ngModel)]="nouvelUtilisateur.password" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Adresse mail :</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="toto@mail.com" [(ngModel)]="nouvelUtilisateur.email" required>
+      </div>
+      <br />
+      <button type="submit" class="btn btn-primary" onclick="alert('Données enregistrées')">Enregistrer</button>
     </form>
   </div>
 </div>

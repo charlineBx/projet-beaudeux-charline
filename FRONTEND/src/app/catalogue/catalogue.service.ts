@@ -7,6 +7,7 @@ import { environment } from '../environments/environment';
 @Injectable()
 export class CatalogueService {
   private apiUrl = environment.backendProduit;
+  private apiUrlNewClient = environment.backendNewClient;
 
   constructor(private http: HttpClient) {}
   public getProduits(): Observable<Produit[]> {
@@ -39,4 +40,24 @@ export class CatalogueService {
       httpOptions
     );
   }
+
+  public creationClient(nouveauClient: Client): Observable<Client> {
+    let data: string = 'nom=' +nouveauClient.nom +
+    '&prenom=' +nouveauClient.prenom +
+    '&login=' +nouveauClient.login+
+    '&password=' +nouveauClient.password +
+    '&email=' +nouveauClient.email;
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/x-www-form-urlencoded',
+      }),
+    };
+    return this.http.post<Client>(
+      environment.backendNewClient, 
+      data,
+      httpOptions
+      );
+  }
 }
+
+

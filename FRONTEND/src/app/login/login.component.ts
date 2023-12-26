@@ -3,6 +3,7 @@ import { Produit } from '../catalogue/models/produit';
 import { CatalogueService } from '../catalogue/catalogue.service';
 import { Observable } from 'rxjs';
 import { ServiceConnexionService } from '../service-connexion.service';
+import { Client } from '../catalogue/models/client';
 
 @Component({
   selector: 'app-login',
@@ -20,6 +21,15 @@ export class LoginComponent  {
   cnx : boolean = false;
  
   produits$: Observable<Array<Produit>>;
+  nouvelUtilisateur: Client = {
+    nom: '',
+    prenom: '',
+    login: '',
+    password: '',
+    email: ''
+  };
+ ;
+
   constructor(private catalogueService: CatalogueService,private serviceConnexion: ServiceConnexionService) {
     this.produits$ = this.catalogueService.getProduits();
   }
@@ -38,6 +48,28 @@ export class LoginComponent  {
       this.serviceConnexion.setDataClient(c);
     });
 
+  }
+
+  ajouterUtilisateur() {
+    this.catalogueService.creationClient(this.nouvelUtilisateur).subscribe(
+      (resultat) => {
+        console.log('Utilisateur ajouté avec succès :', resultat);
+        // Réinitialiser le formulaire ou effectuer d'autres actions après l'ajout
+        this.nouvelUtilisateur = {
+          nom: '',
+          prenom: '',
+          login: '',
+          password:'',
+          email : ''
+          // Réinitialiser les autres champs si nécessaire
+        };
+       
+      },
+      (erreur) => {
+        console.error('Erreur lors de l\'ajout de l\'utilisateur :', erreur);
+        // Gérer l'erreur de la manière appropriée
+      }
+    );
   }
 
   ngOnInit() {
