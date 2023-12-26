@@ -29,6 +29,7 @@ export class ProduitsComponent implements OnInit {
   @ViewChild('input', { static: true }) input: ElementRef ;
 
   constructor(private catalogueService: CatalogueService, private store: Store) {
+    this.produitsFiltres = this.catalogueService.getProduits();
   }
 
   ngOnInit() {
