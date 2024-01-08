@@ -20,9 +20,6 @@
     <button (click)="connexion()" class="btn btn-primary" onclick="alert('Tentative de connexion en cours..')">Connecter</button>
     <br />
     <br />
-    <div *ngIf="erreurCnx" class="alert alert-danger" role="alert">
-      Erreur lors de la connexion. Merci de vérifier vos informations de connexion ou attendre la connexion au server si c'est votre 1ere connexion.
-    </div>
     
   </div>
 </ng-template>
@@ -53,7 +50,7 @@
         <input type="email" class="form-control" id="email" name="email" placeholder="toto@mail.com" [(ngModel)]="nouvelUtilisateur.email" required>
       </div>
       <br />
-      <button type="submit" class="btn btn-primary" onclick="alert('Données enregistrées')">Enregistrer</button>
+      <button type="submit" class="btn btn-primary" >Enregistrer</button>
     </form>
   </div>
 </div>

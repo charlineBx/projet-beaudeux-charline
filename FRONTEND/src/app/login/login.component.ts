@@ -19,7 +19,6 @@ export class LoginComponent  {
   prenom: string = '';
   email : string = '';
   cnx : boolean = false;
-  erreurCnx : boolean = false;
  
   produits$: Observable<Array<Produit>>;
   nouvelUtilisateur: Client = {
@@ -44,19 +43,18 @@ export class LoginComponent  {
       this.loginRecup = c.login;
       this.passwordRecup = c.password;
 
-      this.cnx = true;//(this.loginRecup === this.login && this.passwordRecup === this.password);
+      this.cnx = true;
       this.serviceConnexion.setData(this.cnx);
       this.serviceConnexion.setDataClient(c);
+    },
+    (erreur) =>{
+      alert("Erreur lors de la connexion.");
     });
-    if(!this.cnx){
-      this.erreurCnx = true;
-    }else{
-      this.erreurCnx = false;
-    }
     
   }
 
   ajouterUtilisateur() {
+    alert('Données enregistrées');
     this.catalogueService.creationClient(this.nouvelUtilisateur).subscribe(
       (resultat) => {
         console.log('Utilisateur ajouté avec succès :', resultat);
@@ -73,7 +71,7 @@ export class LoginComponent  {
       },
       (erreur) => {
         console.error('Erreur lors de l\'ajout de l\'utilisateur :', erreur,this.nouvelUtilisateur);
-        // Gérer l'erreur de la manière appropriée
+        alert("Erreur lors de l\'ajout de l\'utilisateur ")
       }
     );
   }
