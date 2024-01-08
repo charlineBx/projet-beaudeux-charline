@@ -66,7 +66,7 @@ export class LoginComponent  {
        
       },
       (erreur) => {
-        console.error('Erreur lors de l\'ajout de l\'utilisateur :', erreur);
+        console.error('Erreur lors de l\'ajout de l\'utilisateur :', erreur,this.nouvelUtilisateur);
         // Gérer l'erreur de la manière appropriée
       }
     );

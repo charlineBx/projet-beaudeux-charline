@@ -1,6 +1,6 @@
 <h1>Panier :</h1>
 
-<button class="btn btn-danger" (click)="clearPanier()">Vider le Panier</button>
+<button class="btn btn-success" (click)="clearPanier()" onclick="alert('Paiement effectué.')">Payer Maintenant</button>
 <hr />
 <div class="card mb-2 " style="width: 18rem;margin-left: 20px;" id="catalogue"  *ngFor="let p of liste | async">
     <div class="card-header" style="width: 18rem;">{{ p.titre }}</div>

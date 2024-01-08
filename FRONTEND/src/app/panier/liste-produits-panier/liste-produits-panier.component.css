@@ -2,3 +2,7 @@ h1{
     background-color: rgb(203, 203, 203);
     text-align: center;
   }
+
+  button{
+    text-align: center;
+  }
