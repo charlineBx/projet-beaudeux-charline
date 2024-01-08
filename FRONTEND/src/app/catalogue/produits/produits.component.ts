@@ -33,6 +33,7 @@ export class ProduitsComponent implements OnInit {
   }
 
   ngOnInit() {
+
     if (this.input) {
       this.searchField$ = fromEvent(this.input.nativeElement, 'input').pipe(
         map((event: any) => event.target.value),
