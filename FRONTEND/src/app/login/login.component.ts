@@ -19,6 +19,7 @@ export class LoginComponent  {
   prenom: string = '';
   email : string = '';
   cnx : boolean = false;
+  erreurCnx : boolean = false;
  
   produits$: Observable<Array<Produit>>;
   nouvelUtilisateur: Client = {
@@ -47,7 +48,12 @@ export class LoginComponent  {
       this.serviceConnexion.setData(this.cnx);
       this.serviceConnexion.setDataClient(c);
     });
-
+    if(!this.cnx){
+      this.erreurCnx = true;
+    }else{
+      this.erreurCnx = false;
+    }
+    
   }
 
   ajouterUtilisateur() {
