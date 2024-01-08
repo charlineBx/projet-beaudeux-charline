@@ -29,7 +29,7 @@ export class ProduitsComponent implements OnInit {
   @ViewChild('input', { static: true }) input: ElementRef ;
 
   constructor(private catalogueService: CatalogueService, private store: Store) {
-    this.produitsFiltres = this.catalogueService.getProduits();
+    this.produits$ = this.catalogueService.getProduits();
   }
 
   ngOnInit() {
@@ -49,7 +49,7 @@ export class ProduitsComponent implements OnInit {
       this.produitsFiltres = this.searchField$;
      
     } else {
-      this.produitsFiltres = this.catalogueService.getProduits();
+      this.produits$ = this.catalogueService.getProduits();
     }
 
     /*
